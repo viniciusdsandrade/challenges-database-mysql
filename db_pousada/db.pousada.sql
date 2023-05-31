@@ -19,8 +19,11 @@ SELECT * FROM reservas;
 ----------------------------------------------------------------------------------------------------------------
 #1 Quantas dados há em cada uma das tabelas 
 SELECT COUNT(*) as ' Quantidade de tipos de quartos da pousada' FROM tiposQuarto;
+<<<<<<< HEAD
 SELECT COUNT(capacidade) as "Quantidade de tipos de quartos da pousada" from tiposQuarto;
 SELECT SUM(capacidade) as "ocupacao total" from tiposQuarto;
+=======
+>>>>>>> 8c5f6e30abc15e8b67b612136868692447bf1f0c
 SELECT COUNT(*) as ' Quantidade de endereços registrados' FROM enderecoPousada;
 SELECT COUNT(*) as ' Quantidades de nacionalidades registradas' FROM nacionalidades;
 SELECT COUNT(*) as ' Quantidade de comodidades da pousada'  FROM comodidades;
@@ -39,7 +42,11 @@ SELECT AVG(preco)  as "Preço médio da diária" FROM quartos;
 #3 - Preço médio da diária por tipo de quarto
 SELECT tp.tipo AS "Tipo de Quarto" , AVG(q.preco) AS "Preço Médio"
 FROM tiposQuarto AS tp
+<<<<<<< HEAD
 INNER JOIN quartos AS q ON tp.id_tipo_quarto = q.id_tipo_quarto
+=======
+LEFT JOIN quartos AS q ON tp.id_tipo_quarto = q.id_tipo_quarto
+>>>>>>> 8c5f6e30abc15e8b67b612136868692447bf1f0c
 GROUP BY tp.id_tipo_quarto, tp.tipo;
 
 #4 - Numero de reservas por tipo de quarto
@@ -57,9 +64,15 @@ GROUP BY c.nome
 ORDER BY "Reservas" DESC;
 
 #6 - Salário médio por cargo dos funcionários da pousada
+<<<<<<< HEAD
 SELECT cf.nome_cargo AS "Cargo", CONCAT('R$', FORMAT(AVG(f.salario), 2, 'de_DE')) AS "Salário Médio"
 FROM funcionarios AS f
 INNER JOIN cargosFuncionarios AS cf ON f.id_cargo = cf.id_cargo
+=======
+SELECT cf.nome_cargo AS "Cargo", AVG(f.salario) AS "Salário Médio"
+FROM funcionarios AS f
+JOIN cargosFuncionarios AS cf ON f.id_cargo = cf.id_cargo
+>>>>>>> 8c5f6e30abc15e8b67b612136868692447bf1f0c
 GROUP BY cf.nome_cargo
 ORDER BY AVG(f.salario) DESC;
 
@@ -110,6 +123,7 @@ LEFT JOIN reservas AS r ON q.id_quarto = r.id_quarto
 GROUP BY tq.id_tipo_quarto
 ORDER BY "Reservas" ASC
 LIMIT 5;
+<<<<<<< HEAD
 
 #13 - Selecione todos os quartos do tipo "Deluxe" com capacidade superior a 3 pessoas.
 SELECT * FROM quartos;
@@ -177,6 +191,8 @@ INNER JOIN metodosPagamento AS mp ON p.id_metodo_pagamento = mp.id_metodo_pagame
 INNER JOIN reservas AS R on r.id_pagamento = p.id_pagamento
 INNER JOIN hospedes AS H ON h.id_hospede = r.id_hospede
 WHERE mp.metodo_pagamento = "Dinheiro";
+=======
+>>>>>>> 8c5f6e30abc15e8b67b612136868692447bf1f0c
 ----------------------------------------------------------------------------------------------------------------
 CREATE TABLE tiposQuarto (
     id_tipo_quarto TINYINT UNSIGNED AUTO_INCREMENT,
